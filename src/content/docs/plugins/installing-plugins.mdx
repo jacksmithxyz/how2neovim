@@ -1,0 +1,50 @@
+---
+title: Installing Plugins
+description: How and why to set up a plugin manager in Neovim
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+In the previous section we setup the [lazy](https://github.com/folke/lazy.nvim) plugin manager.
+
+To install plugins, you (typically) need to include the name of the plugin inside of the curly brackets `{}` in your `lazy.setup({})` method.
+
+### Lualine Example
+
+Here's an example of how you would install the [lualine](https://github.com/nvim-lualine/lualine.nvim) plugin - a simple statusline for Neovim.
+
+```lua
+require("lazy").setup({
+    "nvim-lualine/lualine.nvim"
+})
+```
+
+You can then save and quit, and re-open Neovim and lualine will be installed.
+
+Each plugin will include installation instructions in their GitHub repository, as well as information on configuring it.
+
+### Setting Up Plugins
+
+Similarly to how our plugin manager has code to *install* it and code to *set it up*, individual plugins work the same way.
+
+We have just installed [lualine](https://github.com/nvim-lualine/lualine.nvim) - but we still need to **set it up**.
+
+This is as simple as adding the following code to your configuration (e.g. at the bottom of your `init.lua` file, or in `lua/lualine-steup.lua`):
+
+```lua
+require("lualine").setup()
+```
+
+Each plugin is slightly different to set up, and may have additional options you can configure inside of the setup brackets.
+
+Details for each plugin will be in their relevant GitHub repository.
+
+<Aside type="caution" title="Caveats and Pitfalls To Avoid">
+**Module naming** - In your `lua/` directory make sure you don't create filenames which may conflict with each other.
+
+**Ordering of require statements** - Make sure, for example, you have required and set up your plugin manager, before you try to require and set up your plugins.
+</Aside>
+
+### Finding Plugins
+
+There is a curated list of plugins at [Awesome Neovim](https://github.com/rockerBOO/awesome-neovim) you can use to get started.

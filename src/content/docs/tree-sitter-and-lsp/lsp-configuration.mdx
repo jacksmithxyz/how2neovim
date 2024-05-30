@@ -1,0 +1,81 @@
+---
+title: LSP Configuration
+description: Configuring the LSP
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The first plugin we will use to configure the LSP is called `lsp-config` and is provided by the Neovim team.
+
+`lsp-config` is an abstraction for you to be able to quickly enable language servers that you have installed.
+
+However, we haven't installed any language servers yet.
+
+### Installing Language Servers
+
+Each language server can be installed via a package manager — but often in a different way. For example, the language servers for HTML/CSS/JS are provided by Microsoft, and are installed via `npm`. Whereas the language server for say, Rust, might be managed by `rustup`.
+
+<Aside type="caution" title="Having the right package managers">
+You will need to have the relevant package manager installed based on what language servers you need. For example, if you want to use the HTML/CSS/JS language servers, you will need to have `npm` installed on your system.
+
+Microsoft keeps a [list of LSP servers](https://microsoft.github.io/language-server-protocol/implementors/servers/) where you can check the repositories to see which package manager (if any) you will need to install it.
+</Aside>
+
+An easy way to install and manage these language servers is to use a set of plugins called Mason and mason-lspconfig.
+
+### Setting Up Mason
+
+As explained in the plugin section, add the following code to your `lazy` setup:
+
+```lua
+"williamboman/mason.nvim"
+```
+
+And set it up (e.g. in `init.lua` or `lua/mason-setup.lua`) with:
+
+```lua
+require("mason").setup()
+```
+
+From within Neovim, you can run Mason by typing `:Mason` and install any language servers you want with `I`.
+
+### mason-lspconfig
+
+This can be extended this with another plugin called mason-lspconfig, which just provides some quality of life features, e.g. ensuring servers are installed, automatic installation if they aren’t etc.
+
+Assuming you have installed both mason and mason-lspconfig with your plugin manager, the following code runs both on startup.
+
+```lua
+require("mason").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls" },
+}
+```
+
+The extra setup options for mason-lspconfig are the extra features such as ensuring language servers are installed and configured correctly, and automatically installing any that don’t exist on your system.
+
+
+### Setting up the individual language servers
+
+Add the line `require("lspconfig").lua_ls.setup {}` for each language server you want to set up (replace `lua_ls` with the language server of your choice).
+
+So the final code might look something like:
+
+```lua
+require("mason").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls" },
+}
+
+require("lspconfig").lua_ls.setup {}
+```
+
+And that’s it! next time you quit and re-open Neovim, the language server should already be working.
+
+<Aside type="caution" title="Troubleshooting">
+If you load up a file and aren’t seeing any syntax errors or warnings come up where they should be, there’s a couple things to initially check for:
+
+**Language Server Names** — Ensure in your `require("lspconfig")` statements that the language server name follows the specified convention from the list on :Mason. If the server has a name in italics to the right, this is the name you should be using (e.g. `rust_analyzer` not `rust-analyzer`).
+
+**Project Structure** — The LSP client only attaches to a buffer in certain scenarios. For example with Rust, you have to be in a `cargo` project for the LSP to work. If you try and create a single `main.rs` file, the LSP won’t attach. You can check this with `:LspInfo` which will tell you whether you have a client attached or not. You can also run `:LspStart` to attach it yourself.
+</Aside>

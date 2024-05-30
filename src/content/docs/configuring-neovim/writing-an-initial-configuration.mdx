@@ -1,0 +1,29 @@
+---
+title: Writing an inital configuration
+description: Setting up some initial settings for Neovim in the init.lua file.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Let’s start by creating some very simple settings that you might want for your Lua configuration. Open up your `init.lua` file and add the following code:
+
+```lua
+local opt = vim.opt
+
+opt.cursorline = true
+opt.number = true
+opt.relativenumber = true
+opt.termguicolors = true
+```
+
+### What Does It Do?
+
+This code:
+- Creates a variable called `opt`, which maps to the global options available in vim
+- Sets a cursorline
+- Sets (relative) line numbers which are useful
+- Uses true colors for the terminal
+
+<Aside type="tip" title="Sensible Defaults">
+Neovim has a lot of [sensible defaults](https://neovim.io/doc/user/vim_diff.html#nvim-defaults), meaning a lot of the typical settings you might need are already set internally.
+</Aside>

@@ -1,0 +1,28 @@
+---
+title: Keymaps
+description: How to set custom keymaps in Lua
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Setting custom keymaps in Neovim is common, as you may want to download plugins with additional functionality, and bind some of their commands to certain key mappings.
+
+In Vim and Neovim, there is a special key specially created for custom user commands: the **leader key**.
+
+### Remapping the Leader Key
+
+By default, the leader is set to backslash (`\`).
+
+This doesn't feel very intuitive for some people, so is often remapped to `space`.
+
+To remap the leader key, simply add the following line of code to your configuration:
+
+```lua
+vim.g.mapleader = " "
+```
+
+### Configuration Examples
+
+<Aside type="caution" title="Choose Your Leader Key Carefully">
+If you decide to remap the leader key to something other than `space`, make sure it doesn't clash with any of the default keys used in Vim's normal mode.
+</Aside>

@@ -1,4 +1,121 @@
 ---
-title: The init.lua file
-description: How init.lua works and writing your first configuration.
+title: Nested Configurations
+description: How you can nest your Neovim configurations with Lua modules
 ---
+
+import { Aside } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
+
+If you are using the `lua/` folder to organize your Neovim configuration, your current setup might look something like this:
+
+<FileTree>
+
+- init.lua
+- lazy-lock.json
+- lua
+    - keymaps.lua
+    - settings.lua
+    - mason-setup.lua
+    - treesitter-setup.lua
+    - lualine-setup.lua
+    - plugins-setup.lua
+
+</FileTree>
+
+And your `init.lua` file might have a *huge* amount of imports, for example:
+
+```lua
+require("keymaps")
+require("settings")
+require("treesitter-setup.lua")
+require("mason-setup.lua")
+require("plugins-setup.lua")
+require("lualine-setup.lua")
+```
+
+This may still feel a little unorganized. There are a couple methods to clean up your Lua configuration, as follows.
+
+### Using directories and dot notation
+
+With Lua modules, you can create subdirectories within your `lua/` directory. For example:
+
+<FileTree>
+
+- init.lua
+- lazy-lock.json
+- lua
+    - core
+        - keymaps.lua
+        - settings.lua
+    - lsp
+        - mason-setup.lua
+        - treesitter-setup.lua
+    - plugins
+        - lualine-setup.lua
+        - plugins-setup.lua
+
+</FileTree>
+
+Which cleans up the `lua/` directory nicely.
+
+To relfect these changes, in your `init.lua` you will need to update the `require` statements to include the subdirectories.
+
+```lua
+require("core.keymaps")
+require("core.settings")
+require("lsp.treesitter-setup.lua")
+require("lsp.mason-setup.lua")
+require("plugins.plugins-setup.lua")
+require("plugins.lualine-setup.lua")
+```
+
+However, our `init.lua` file is still the same. If this works for you - great! If you want to clean up your `init.lua` file as well, read the next method.
+
+### Using directories and init.lua files
+
+This takes a similar approach to the previous method, but in each `lua/` subdirectory, you also create an `init.lua` file.
+
+<FileTree>
+
+- init.lua
+- lazy-lock.json
+- lua
+    - core
+        - init.lua
+        - keymaps.lua
+        - settings.lua
+    - lsp
+        - init.lua
+        - mason-setup.lua
+        - treesitter-setup.lua
+    - plugins
+        - init.lua
+        - lualine-setup.lua
+        - plugins-setup.lua
+
+</FileTree>
+
+In each respective nested `init.lua`, you can require that directory's files.
+
+For example, in `plugins/init.lua` your code would be:
+
+```lua
+require("lualine-setup")
+require("plugins-setup")
+```
+
+And the same pattern follows for each `lua/` subdirectory.
+
+In your top-level `init.lua` file, you can now use the following `require` statements:
+
+```lua
+require("core")
+require("lsp")
+require("plugins")
+```
+
+Which makes the configuration a lot cleaner.
+
+<Aside type="caution" title="require order">
+Remember that the order you `require` parts of your configuration is important. You may want to `require` your keymaps and other settings before plugins, and plugins before your LSP settings etc. Also remember that the order of statements in each subdirectory is also important.
+</Aside>

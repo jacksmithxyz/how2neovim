@@ -91,6 +91,15 @@ export default defineConfig({
           ],
         },
         {
+          label: "Advanced",
+          items: [
+            {
+              label: "Nested Configurations",
+              link: "/advanced/nested-configurations",
+            },
+          ],
+        },
+        {
           label: "Reference",
           autogenerate: { directory: "reference" },
         },

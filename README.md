@@ -1,6 +1,6 @@
 # how2neovim
 
-how2neovim is a A simple and opinionated guide on configuring and setting up Neovim from scratch.
+how2neovim is a a simple and opinionated guide on configuring and setting up Neovim from scratch.
 
 It is built using [Astro](https://astro.build) and [Starlight](https://starlight.astro.build).
 

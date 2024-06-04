@@ -9,6 +9,7 @@ export default defineConfig({
       social: {
         github: "https://github.com/finnala/",
       },
+      favicon: "/favicon.ico",
       sidebar: [
         {
           label: "Getting Started",

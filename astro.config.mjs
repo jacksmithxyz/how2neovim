@@ -5,6 +5,15 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
+      head: [
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image",
+            content: "/website-screenshot.png",
+          },
+        },
+      ],
       title: "how2neovim",
       social: {
         github: "https://github.com/finnala/",

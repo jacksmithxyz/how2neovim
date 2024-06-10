@@ -77,6 +77,10 @@ export default defineConfig({
               label: "Installing Plugins",
               link: "/plugins/installing-plugins",
             },
+            {
+              label: "Colorschemes",
+              link: "/plugins/colorschemes",
+            },
           ],
         },
         {

@@ -13,6 +13,14 @@ export default defineConfig({
             content: "/website-screenshot.png",
           },
         },
+        {
+          tag: "script",
+          attrs: {
+            src: "https://scripts.withcabin.com/hello.js",
+            async: true,
+            defer: true,
+          },
+        },
       ],
       title: "how2neovim",
       social: {

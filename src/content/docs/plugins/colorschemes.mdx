@@ -1,4 +1,46 @@
 ---
-title: The init.lua file
-description: How init.lua works and writing your first configuration.
+title: Colorschemes
+description: How to set up custom colorschemes in Neovim
 ---
+
+### Finding Colorschemes
+
+You can find a list of [tree-sitter](/tree-sitter-and-lsp/tree-sitter) supported/compatible themes which you can use [here](https://github.com/rockerBOO/awesome-neovim#colorscheme).
+
+### Installing Colorschemes
+
+Use your plugin manager to install a colorscheme. E.g. adding the following line to your `lazy` setup to install the [catppuccin](https://github.com/catppuccin/nvim) theme.
+
+```lua
+{ "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+```
+
+### Setting the Theme
+
+Add the following line to your `init.lua` file or somewhere in your `lua/` configuration.
+
+```lua
+vim.cmd.colorscheme "catppuccin-mocha"
+```
+
+Some themes may have variants, and the documentation for each theme should walk you throught the appropriate name to use to set the theme.
+
+### Using and Switching between multiple themes
+
+Install multiple themes, e.g.:
+
+```lua
+{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+{ "neanias/everforest-nvim", priority = 1000 }
+```
+
+To set a colorscheme in Neovim, you use the command `:colorscheme`. We can use this to set up custom keybinds to switch to different themes.
+
+E.g.:
+
+```lua
+vim.keymap.set("n", "<leader>cc", "<cmd>colorscheme catppuccin-mocha<cr>")
+vim.keymap.set("n", "<leader>ce", "<cmd>colorscheme everforest<cr>")
+```
+
+This sets a custom keymap for when we are in normal mode (when you press `Esc` or `Ctrl + [`), sets the keybind (the [leader key](/configuring-neovim/keymaps) followed by some keys), and the actual command to run in command mode (the equivlanet of you typing `:colorscheme name` and hitting enter).

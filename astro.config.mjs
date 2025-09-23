@@ -23,9 +23,6 @@ export default defineConfig({
         },
       ],
       title: "how2neovim",
-      social: {
-        github: "https://github.com/finnala/",
-      },
       favicon: "/favicon.ico",
       sidebar: [
         {

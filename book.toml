@@ -3,3 +3,6 @@ authors = ["Jack Smith"]
 language = "en"
 src = "src"
 title = "how2neovim"
+
+[output.html]
+cname = "how2neovim-production.up.railway.app"

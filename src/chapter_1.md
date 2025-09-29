@@ -1,7 +1,4 @@
----
-title: Installing Neovim
-description: How to install Neovim.
----
+# Installing Neovim
 
 To install Neovim on MacOS or Linux, you can use your  operating system's package manager.
 
@@ -33,4 +30,4 @@ sudo apt-get install neovim
 sudo apt install neovim
 ```
 
-For all other Linux distributons, try installing it with your respective package manager. See the entire list of supported distros [here](https://neovim).
+For all other Linux distributons, try installing it with your respective package manager. See the entire list of supported distros [here](https://github.com/neovim/neovim/blob/master/INSTALL.md).

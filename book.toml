@@ -1,0 +1,5 @@
+[book]
+authors = ["Jack Smith"]
+language = "en"
+src = "src"
+title = "how2neovim"

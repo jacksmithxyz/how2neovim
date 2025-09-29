@@ -1,7 +1,5 @@
----
-title: Entering and Exiting Neovim
-description: How to start up Neovim from the terminal, and how to quit.
----
+
+# First Steps
 
 To run Neovim, open up a terminal and type the command `nvim`.
 

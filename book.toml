@@ -4,5 +4,8 @@ language = "en"
 src = "src"
 title = "how2neovim"
 
+[build]
+build_dir = "public"
+
 [output.html]
 cname = "how2neovim-production.up.railway.app"

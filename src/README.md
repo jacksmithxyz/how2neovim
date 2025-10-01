@@ -14,6 +14,6 @@ This book is **not a copy and paste configuration for Neovim**.
 
 It is intended to help you understand how configuration works so you can make the program your own, rather than giving you a bootstrapped system.
 
-This book is **not a guide on how to use Vim motions**. Using Neovim and becoming productive with its many keybinds is nt in the scope of this book.
+This book is **not a guide on how to use Vim motions**. Using Neovim and becoming productive with its many keybinds is not in the scope of this book.
 
 Plenty of excellent resources exist on getting proficient with Vim keybindings, and this book is instead focused purely on understanding how Neovim, as a tool/program works.

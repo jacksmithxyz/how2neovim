@@ -30,7 +30,7 @@ Here's a step-by-step breakdown of what this code does:
 
 3. Lines 3 - 9 clones the repo if it doesn't exist on your system (in other words, installs lazy)
 
-4. Line 10 adds lazy to Neovim’s [runtimepath](/configuring-neovim/the-runtimepath)
+4. Line 10 adds lazy to Neovim’s runtimepath
 
 > **lazy is a plugin manager and a plugin itself** - lazy adds *itself* to the runtimepath, so it loads every time Neovim is opened. In turn, it will manage the plugins you install.
 

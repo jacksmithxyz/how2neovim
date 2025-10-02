@@ -1,4 +1,4 @@
-Neovim, like a lot of other UNIX programs, is configured through a user’s [dotfiles](/reference/dotfiles).
+Neovim, like a lot of other UNIX programs, is configured through a user’s [dotfiles](https://wiki.archlinux.org/title/Dotfiles).
 
 By creating dotifles for Neovim, you can change the default settings, initialize plugins, set colorschemes, and more.
 

@@ -20,3 +20,6 @@
 - [Installing a Colorscheme](./chapter_8.md)
 - [Installing Other Plugins](./chapter_9.md)
 
+# Tree-sitter and LSP
+
+- [Introduction to Tree-sitter](./chapter_10.md)

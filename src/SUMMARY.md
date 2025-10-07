@@ -23,3 +23,5 @@
 # Tree-sitter and LSP
 
 - [Introduction to Tree-sitter](./chapter_10.md)
+- [Introduction to LSP](./chapter_11.md)
+- [LSP Configuration](./chapter_12.md)
